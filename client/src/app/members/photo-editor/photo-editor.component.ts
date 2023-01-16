@@ -20,7 +20,7 @@ export class PhotoEditorComponent implements OnInit {
   uploader:FileUploader;
   hasBaseDropzoneOver = false;
   baseUrl = environment.apiUrl;
-  user: User;
+  user: any;
 
   constructor(private accountService: AccountService, private memberService: MembersService) { 
     //TODO study rxjs pipe, take and so on
@@ -73,7 +73,12 @@ export class PhotoEditorComponent implements OnInit {
 
     this.uploader.onSuccessItem = (item, response, status, headers) => {
       const photo = JSON.parse(response);
-      this.member.photos.push(photo);
+      this.member?.photos.push(photo);
+      if(photo.isMain & this.user && this.member) {
+        this.user.photoUrl = photo.url;
+        this.member.photoUrl = photo.url;
+        this.accountService.setCurrentUser(this.user);
+      }
     }
   }
 
