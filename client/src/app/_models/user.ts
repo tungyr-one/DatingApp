@@ -2,9 +2,12 @@ export interface User {
     username:string;
     token:string;
     photoUrl: string;
+    knownAs: string;
+    gender: string;
+
 }
 
-// DELETE THESE!!!
+// TODO DELETE THESE!!!
 
 // let data: number | string = 23;
 // data = '10';

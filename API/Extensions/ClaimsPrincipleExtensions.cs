@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace API.Extensions
 {
+    //TODO ClaimsPrinciple read more
     public static class ClaimsPrincipleExtensions
     {
         public static string GetUserName(this ClaimsPrincipal user)
