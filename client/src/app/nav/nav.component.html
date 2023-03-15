@@ -6,7 +6,9 @@
             <ul class="navbar-nav mr-auto">
                 <ng-container *ngIf="accountService.currentUser$ | async">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" routerLink="/members" routerLinkActive="active">Matches</a>
+                        <a class="nav-link" aria-current="page" routerLink="/members"
+                        [routerLinkActiveOptions]="{exact:true}"
+                        routerLinkActive="active">Matches</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" routerLink="/lists" routerLinkActive="active">Lists</a>
@@ -21,32 +23,32 @@
                     <li class="nav-item">
                         <a class="nav-link" routerLink="#" routerLinkActive="active">Clubs</a>
                     </li>
-                </ng-container>                
+                </ng-container>
             </ul>
 
             <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>
                 <img src="{{user.photoUrl}}" alt="{{user.Username}}">
-                <a class="dropdown-toggle text-light ml-2" dropdownToggle>Welcome {{user.knownAs | titlecase}}</a>  
+                <a class="dropdown-toggle text-light ml-2" dropdownToggle>Welcome {{user.knownAs | titlecase}}</a>
                 <div class="dropdown-menu mt-3" *dropdownMenu>
                     <a routerLink="/member/edit" class="dropdown-item">Edit Profile</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" (click)="logout()">Logout</a>
-                </div>    
+                </div>
             </div>
 
             <form *ngIf="(accountService.currentUser$ | async) === null" #loginForm="ngForm" class="d-flex" (ngSubmit)="login()"
             autocomplete="off">
-            <input 
+            <input
                 name="username"
                 [(ngModel)]="model.username"
-                class="form-control me-2" 
-                type="username" 
+                class="form-control me-2"
+                type="username"
                 placeholder="Username">
-            <input 
+            <input
                 name="password"
                 [(ngModel)]="model.password"
-                class="form-control me-2" 
-                type="password" 
+                class="form-control me-2"
+                type="password"
                 placeholder="Password">
             <button class="btn btn-success" type="submit">Login</button>
             </form>
