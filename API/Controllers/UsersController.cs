@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace API.Controllers
 {
    [Authorize]
@@ -48,13 +49,6 @@ namespace API.Controllers
           users.TotalCount, users.TotalPages));
          return Ok(users);
       }
-
-      // // api/users/3
-      // [HttpGet("{id}")]
-      // public async Task<ActionResult<AppUser>> GetUser(int id)
-      // {
-      //     return await _userRepository.GetUserByIdAsync(id);
-      // }
 
       [HttpGet("{username}", Name = "GetUser")]
       public async Task<ActionResult<MemberDto>> GetUser(string username)
