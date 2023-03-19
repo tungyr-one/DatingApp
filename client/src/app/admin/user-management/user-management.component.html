@@ -1,0 +1,18 @@
+<div class="row">
+  <table class="table">
+    <thead>
+      <tr>
+        <th stule="width: 30%;">Username</th>
+        <th stule="width: 40%;">Active roles</th>
+        <th stule="width: 30%;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{user.username}}</td>
+        <td>{{user.roles}}</td>
+        <td><button (click)="openRolesModal(user)" class="btn-info">Edit roles</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
