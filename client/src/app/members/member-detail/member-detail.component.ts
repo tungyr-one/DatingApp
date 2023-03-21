@@ -1,3 +1,4 @@
+import { PresenceService } from './../../_services/presence.service';
 import { MessageService } from './../../_services/message.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -22,7 +23,7 @@ export class MemberDetailComponent implements OnInit {
 
 
   constructor(private memberService:MembersService, private route:ActivatedRoute,
-     private messageService: MessageService) { }
+     private messageService: MessageService, public presenceService:PresenceService) { }
 
   ngOnInit(): void {
     this.route.data.subscribe({
