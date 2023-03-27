@@ -2,9 +2,11 @@ import { NgForm } from '@angular/forms';
 import { Message } from './../../_models/message';
 import { MessageService } from './../../_services/message.service';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy } from '@angular/compiler/src/core';
 
 
 @Component({
+  // changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-member-messages',
   templateUrl: './member-messages.component.html',
   styleUrls: ['./member-messages.component.css']

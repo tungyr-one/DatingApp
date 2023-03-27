@@ -33,6 +33,7 @@ import { UserManagementComponent } from './admin/user-management/user-management
 import { PhotoManagementComponent } from './admin/photo-management/photo-management.component';
 import { RolesModalComponent } from './modals/roles-modal/roles-modal.component';
 import { DateAgoPipe } from './_pipes/date-ago.pipe';
+import { ConfirmDialogComponent } from './modals/confirm-dialog/confirm-dialog.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { DateAgoPipe } from './_pipes/date-ago.pipe';
     UserManagementComponent,
     PhotoManagementComponent,
     RolesModalComponent,
-    DateAgoPipe
+    DateAgoPipe,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
