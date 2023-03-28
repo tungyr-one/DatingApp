@@ -17,7 +17,7 @@ namespace API.Extensions
         {
             services.AddDbContext<DataContext>(options=>
             {
-                options.UseSqlite(config.GetConnectionString("DefaultConnection"));
+                options.UseNpgsql(config.GetConnectionString("DefaultConnection"));
             });
             services.AddCors();
             services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
