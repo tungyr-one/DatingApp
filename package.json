@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "@angular/cdk": "^14.2.7",
+    "@kolkov/ngx-gallery": "^2.0.1",
+    "@microsoft/signalr": "^7.0.4",
+    "ng2-file-upload": "^4.0.0",
+    "ngx-bootstrap": "^10.2.0",
+    "ngx-toastr": "^15.2.2",
+    "rxjs": "^7.8.0",
+    "tslib": "^2.5.0"
+  },
+  "devDependencies": {
+    "@types/jasminewd2": "^2.0.10",
+    "@types/node": "^18.15.10",
+    "codelyzer": "^6.0.2",
+    "karma-chrome-launcher": "^3.1.1",
+    "karma-jasmine": "^5.1.0",
+    "karma-jasmine-html-reporter": "^2.0.0"
+  }
+}
