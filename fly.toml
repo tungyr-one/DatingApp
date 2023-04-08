@@ -1,0 +1,34 @@
+# fly.toml file generated for tungyr-dating on 2023-04-07T11:53:55+03:00
+
+app = "tungyr-dating"
+kill_signal = "SIGINT"
+kill_timeout = 5
+mounts = []
+primary_region = "otp"
+processes = []
+
+[build]
+  image = "vibelyk/datingapp:latest"
+
+[env]
+  ASPNETCORE_URLS="http://+:8080"
+  CloudinarySettings__CloudName="dkzlg5xo4"
+  CloudinarySettings__ApiKey="344658683376868"
+
+[[services]]
+  internal_port = 8080
+  processes = ["app"]
+  protocol = "tcp"
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+    type = "connections"
+
+  [[services.ports]]
+    force_https = true
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
