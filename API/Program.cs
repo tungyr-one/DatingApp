@@ -5,13 +5,14 @@ using API.Middleware;
 using API.SignalR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+//pr
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddControllers();
-builder.Services.AddCors();
+builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddIdentityServices(builder.Configuration);
+builder.Services.AddCors();
 builder.Services.AddSignalR();
 
 var connString = "";
@@ -32,7 +33,7 @@ else
         var pgPass = pgUserPass.Split(":")[1];
         var pgHost = pgHostPort.Split(":")[0];
         var pgPort = pgHostPort.Split(":")[1];
-	var updatedHost = pgHost.Replace("flycast", "internal");
+	    var updatedHost = pgHost.Replace("flycast", "internal");
 
         connString = $"Server={updatedHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};";
 }
@@ -45,10 +46,6 @@ builder.Services.AddDbContext<DataContext>(opt =>
 var app = builder.Build();
 
 app.UseMiddleware<ExceptionMiddleware>(); 
- 
-// app.UseHttpsRedirection(); 
- 
-app.UseRouting(); 
  
 app.UseCors(x => x.AllowAnyHeader() 
     .AllowAnyMethod() 
@@ -75,6 +72,7 @@ try
     var userManager = services.GetRequiredService<UserManager<AppUser>>(); 
     var roleManager = services.GetRequiredService<RoleManager<AppRole>>(); 
     await context.Database.MigrateAsync(); 
+    await Seed.ClearConnections(context);
     await Seed.SeedUsers(userManager, roleManager); 
 } 
 catch (Exception ex) 
